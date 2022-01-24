@@ -1,5 +1,5 @@
 module.exports = {
-  
+  assetsDir: 'h5',
   devServer: {
     disableHostCheck: true,
     proxy: {
