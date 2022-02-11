@@ -5,10 +5,15 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from '../../components/HelloWorld.vue'
+import mixins from '../../libs/mixins/common'
 
 export default {
   name: 'App',
+  mixins: [mixins],
+  mounted() {
+    this.setPageTitle('公众号授权登录')
+  },
   data() {
     return {
       search: location.search
