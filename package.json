@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.25.0",
     "core-js": "^3.6.5",
+    "glob": "^7.2.0",
     "lodash-es": "^4.17.21",
     "luch-request": "^3.0.7",
     "vue": "^2.6.11"
@@ -38,7 +39,8 @@
     "rules": {},
     "globals": {
       "wx": true,
-      "uni": true
+      "uni": true,
+      "WeixinJSBridge": true
     }
   },
   "browserslist": [
