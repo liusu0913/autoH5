@@ -34,12 +34,13 @@ export default {
       }, 2000);
     },
     getOpenId() {
-      api.getMpOpenId({
+      api.getMpUserInfo({
         code: this.code
       }).then(res => {
         if (res.code === 0) {
           api.update({
             openId: res.data.openid,
+            avatar: res.data.headimgurl
           }, {
             Authorization: `Bearer ${this.token}`
           }).then(data => {
