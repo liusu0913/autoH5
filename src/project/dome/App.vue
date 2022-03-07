@@ -33,7 +33,9 @@ export default {
       })
     }
     const userInfo = await api.getMpUserInfo({code: this.code})
-
+    if (userInfo.code) {
+      location.href = location.href.split('&code')[0]
+    }
     if (userInfo.code === 0) {
       this.openId = userInfo.data.openid
       log.createWxUser({
@@ -65,18 +67,31 @@ export default {
           timestamp: res.data.time, // 必填，生成签名的时间戳
           nonceStr: res.data.noncestr, // 必填，生成签名的随机串
           signature: res.data.sign,// 必填，签名
-          jsApiList: ['updateAppMessageShareData']
+          jsApiList: [
+            'updateAppMessageShareData',
+            'updateTimelineShareData',
+          ]
         });
-
         wx.ready(function () {
           //需在用户可能点击分享按钮前就先调用
-          wx.updateAppMessageShareData({
-            title: 'test', // 分享标题
-            desc: '测试文案', // 分享描述
+          wx.updateAppMessageShareData({ 
+            title: '分享标题', // 分享标题
+            desc: '分享描述：测试文案', // 分享描述
             link: shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: 'https://baike-med-1256891581.file.myqcloud.com/mini_lite/production/static/test/a5.jpg', // 分享图标
             success: function () {
-              console.log('share txt success')
+              // 设置成功
+              console.log('updateAppMessageShareData success')
+            }
+          })
+
+          wx.updateTimelineShareData({ 
+            title: '分享标题', // 分享标题
+            link: shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: 'https://baike-med-1256891581.file.myqcloud.com/mini_lite/production/static/test/a5.jpg', // 分享图标
+            success: function () {
+              // 设置成功
+              console.log('updateTimelineShareData success')
             }
           })
       });         
