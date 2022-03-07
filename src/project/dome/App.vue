@@ -35,29 +35,28 @@ export default {
     const userInfo = await api.getMpUserInfo({code: this.code})
 
     if (userInfo.code === 0) {
-        this.openId = userInfo.data.openid
-        log.createWxUser({
-          activeId: this.activeId,
-          unionid: userInfo.data.unionid,
-          openId: userInfo.data.openid,
-          name: userInfo.data.nickname,
-          avatar: userInfo.data.headimgurl,
-          sourceJobId: this.sourceJobId,
-          belongCompany: Number(this.belongCompany),
-          sourceOpenId: this.sourceOpenId
-        })
-        log.pv({
+      this.openId = userInfo.data.openid
+      log.createWxUser({
+        activeId: this.activeId,
+        unionid: userInfo.data.unionid,
+        openId: userInfo.data.openid,
+        name: userInfo.data.nickname,
+        avatar: userInfo.data.headimgurl,
+        sourceJobId: this.sourceJobId,
+        belongCompany: Number(this.belongCompany),
+        sourceOpenId: this.sourceOpenId
+      })
+      log.pv({
           activeId: this.activeId,
           openId: userInfo.data.openid,
           jobId: this.sourceJobId,
           belongCompany: Number(this.belongCompany),
           sourceOpenId: this.sourceOpenId
         })
-      }
+    }
     const shareUrl = `${location.origin}${location.pathname}?activeId=${this.activeId}&jobId=${this.sourceJobId}&belongCompany=${this.belongCompany}&sourceOpenId=${this.openId}`
-    console.log(shareUrl)
     api.getMpSign({
-      url: `${location.origin}${location.pathname}?activeId=${this.activeId}&jobId=${this.sourceJobId}&belongCompany=${this.belongCompany}&sourceOpenId=${this.openId}`
+      url: location.href.split('#')[0]
     }).then(res => {
       if (res.code === 0) {
         wx.config({
@@ -68,7 +67,9 @@ export default {
           signature: res.data.sign,// 必填，签名
           jsApiList: ['updateAppMessageShareData']
         });
-        wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
+
+        wx.ready(function () {
+          //需在用户可能点击分享按钮前就先调用
           wx.updateAppMessageShareData({
             title: 'test', // 分享标题
             desc: '测试文案', // 分享描述
@@ -94,7 +95,6 @@ export default {
     }
   }
 }
-// http://marketing-tech.cn/dome?activeId=f0bee601b5130224e9742db870f057e5&jobId=12345&belongCompany=1&sourceOpenId=ceshi-01
 
 </script>
 
