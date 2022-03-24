@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="../../assets/dome1.jpg" alt="" class="dome">
+    <img src="../../assets/dome2.jpg" alt="" class="dome">
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
   name: 'App',
   mixins: [mixins],
   async mounted() {
-    this.setPageTitle('中宏护牙保齿')
+    this.setPageTitle('20万一针的癌症克星老百姓如何承担')
     this.code = getUrlParams('code')
     this.activeId = getUrlParams('activeId')
     this.sourceJobId = getUrlParams('jobId')
@@ -75,10 +75,10 @@ export default {
         wx.ready(function () {
           //需在用户可能点击分享按钮前就先调用
           wx.updateAppMessageShareData({ 
-            title: '陆游牙疼不是病，疼起来真要命', // 分享标题
-            desc: '李白斗酒诗百篇,陆游齿痛诗千行', // 分享描述
+            title: '20万一针的癌症克星老百姓如何承担', // 分享标题
+            desc: '中宏保险助力更多家庭享受高品质医疗', // 分享描述
             link: shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-            imgUrl: 'https://img-1307195053.cos.ap-nanjing.myqcloud.com/WechatIMG4775.png', // 分享图标
+            imgUrl: 'https://img-1307195053.cos.ap-nanjing.myqcloud.com/WechatIMG4771.png', // 分享图标
             success: function () {
               // 设置成功
               console.log('updateAppMessageShareData success')

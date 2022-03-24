@@ -14,6 +14,7 @@ entryFiles.forEach(path => {
   const key = path.split('/src/project/')[1].split('/')[0]
   pages[key] = `src/project/${key}/main.js`
 })
+console.log(pages, 111111)
 module.exports = {
   assetsDir: 'h5',
   pages,
