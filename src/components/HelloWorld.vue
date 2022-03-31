@@ -1,7 +1,6 @@
 <template>
   <div class="hello">
-    <button class="btn" @click="getOpenId">授权登录</button>
-    <h1>{{ openId }}</h1>
+    <!-- <button class="btn" @click="getOpenId">授权登录</button> -->
     <div v-if="isShow" class="toast">{{txt}}</div>
   </div>
 </template>
@@ -16,6 +15,10 @@ export default {
     this.code = getUrlParams('code')
     this.token = getUrlParams('token')
     this.openId = getUrlParams('openid')
+    this.toastShow()
+    this.txt = '获取权限中...'
+    this.getOpenId()
+    
   },
   data() {
     return {
