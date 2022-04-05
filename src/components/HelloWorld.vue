@@ -52,7 +52,11 @@ export default {
                 url: '/pages/index/index'
               });
             } else {
-              this.txt = 'code过期请重新进入小程序'
+              if (data.message) {
+                this.txt = data.message
+              } else {
+                this.txt = 'code过期请重新进入小程序'
+              }
               this.toastShow()
             }
           })
@@ -90,11 +94,14 @@ export default {
   border-radius: 20px;
 }
 .toast {
-  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   padding: 5px 10px;
   background-color: rgba(0,0,0,.5);
   color: #fff;
   border-radius: 10px;
+  transform: translate(-50%, -50%);
 }
 </style>
 

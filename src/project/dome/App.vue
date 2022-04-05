@@ -24,7 +24,7 @@ export default {
       location.href = this.mpSrc
       return false
     }
-    if (this.sourceJobId) {
+    if (this.sourceOpenId) {
       log.share({
         activeId: this.activeId,
         openId: this.sourceJobId,
@@ -49,12 +49,12 @@ export default {
         sourceOpenId: this.sourceOpenId
       })
       log.pv({
-          activeId: this.activeId,
-          openId: userInfo.data.openid,
-          jobId: this.sourceJobId,
-          belongCompany: Number(this.belongCompany),
-          sourceOpenId: this.sourceOpenId
-        })
+        activeId: this.activeId,
+        openId: userInfo.data.openid,
+        jobId: this.sourceJobId,
+        belongCompany: Number(this.belongCompany),
+        sourceOpenId: this.sourceOpenId
+      })
     }
     const shareUrl = `${location.origin}${location.pathname}?activeId=${this.activeId}&jobId=${this.sourceJobId}&belongCompany=${this.belongCompany}&sourceOpenId=${this.openId}`
     api.getMpSign({

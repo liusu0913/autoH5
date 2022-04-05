@@ -24,7 +24,7 @@ export default {
       location.href = this.mpSrc
       return false
     }
-    if (this.sourceJobId) {
+    if (this.sourceOpenId) {
       log.share({
         activeId: this.activeId,
         openId: this.sourceJobId,
