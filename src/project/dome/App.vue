@@ -24,14 +24,6 @@ export default {
       location.href = this.mpSrc
       return false
     }
-    if (this.sourceOpenId) {
-      log.share({
-        activeId: this.activeId,
-        openId: this.sourceJobId,
-        jobId: this.sourceJobId,
-        belongCompany: Number(this.belongCompany)
-      })
-    }
     const userInfo = await api.getMpUserInfo({code: this.code})
     if (userInfo.code) {
       location.href = location.href.split('&code')[0]
@@ -48,6 +40,15 @@ export default {
         belongCompany: Number(this.belongCompany),
         sourceOpenId: this.sourceOpenId
       })
+      // 判断当前的分享ID是否和当前的openid是否相同
+      if (this.sourceOpenId && userInfo.data.openid  === this.sourceOpenId) {
+        log.share({
+          activeId: this.activeId,
+          openId: this.sourceJobId,
+          jobId: this.sourceJobId,
+          belongCompany: Number(this.belongCompany)
+        })
+      }
       log.pv({
         activeId: this.activeId,
         openId: userInfo.data.openid,
