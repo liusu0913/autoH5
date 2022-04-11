@@ -41,7 +41,7 @@ export default {
         sourceOpenId: this.sourceOpenId
       })
       // 判断当前的分享ID是否和当前的openid是否相同
-      if (this.sourceOpenId && userInfo.data.openid  === this.sourceOpenId) {
+      if (this.sourceOpenId && userInfo.data.openid !== this.sourceOpenId) {
         log.share({
           activeId: this.activeId,
           openId: this.sourceJobId,
