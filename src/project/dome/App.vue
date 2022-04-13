@@ -44,7 +44,7 @@ export default {
       if (this.sourceOpenId && userInfo.data.openid !== this.sourceOpenId) {
         log.share({
           activeId: this.activeId,
-          openId: this.openId,
+          openId: this.sourceOpenId,
           jobId: this.sourceJobId,
           belongCompany: Number(this.belongCompany)
         })
